@@ -28,9 +28,12 @@ uint8_t Player::get_mark(void)
 
 void Player::make_move(void)
 {
-	//TODO(Jacek) Zadbaj o kontrolę błędów. Ruch musi byc wykonany i nie moze byc taki sami jak poprzedni
-	std::cout << "Make move:" << std::endl;
-	std::cin >> this->current_move;
+
+}
+
+void Player::set_move(int16_t idx)
+{
+	this->current_move = idx;
 }
 
 void Player::display_name(void)

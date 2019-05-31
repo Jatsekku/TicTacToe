@@ -12,7 +12,8 @@
 		public:
 			Player(void);
 			Player(std::string name, uint8_t mark);
-			void make_move(void);
+			virtual void make_move(void);
+			void set_move(int16_t idx);
 			int16_t get_move(void);
 			uint8_t get_mark(void);
 			//std::string get_name(void);
