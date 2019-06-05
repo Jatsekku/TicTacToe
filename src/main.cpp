@@ -1,17 +1,15 @@
 #include <iostream>
 #include "Board.hpp"
 #include "Human.hpp"
+#include "Bot.hpp"
 #include "Game.hpp"
 
 int main(void)
 {
-	Board b(10);
+	Board b(6);
 	Human p1("Jacek", 1);
-	Human p2("Ewa", 2);
-	Game g(5, &p1, &p2, &b);
-
-	//p1.display_name();
-	//p2.display_name();
+	Bot p2("XO_Bot", 2);
+	Game g(4, &p1, &p2, &b);
 
 
 	g.start();
@@ -21,3 +19,4 @@ int main(void)
 
 
 }
+

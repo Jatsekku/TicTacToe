@@ -26,16 +26,26 @@ int8_t Board::set_field(uint8_t x, uint8_t y, uint8_t mark)
 	uint16_t cell_idx = field_idx/4;				//Index of cell (byte) in physical bf array
 	uint8_t tinycell_idx = (field_idx%4)*2;			//Index of tinycell (2bit) in physical bf array
 
+	if(mark == 0)
+		this->bf[cell_idx] &= ~(0x03 << tinycell_idx);
+
 	//If there already is sign return error;
 	if(this->bf[cell_idx] & (0x03 << tinycell_idx))
 		return -1;
 
 	//Set specified mark on given position
 	if(mark == 1)
+	{
 		this->bf[cell_idx] |= (0x01 << tinycell_idx);
+		this->pawns_amount++;
+	}
 
 	if(mark == 2)
+	{
 		this->bf[cell_idx] |= (0x02 << tinycell_idx);
+		this->pawns_amount++;
+	}
+
 
 	//No error
 	return 0;
@@ -55,16 +65,25 @@ int8_t Board::set_field(uint16_t idx, uint8_t mark)
 	uint16_t cell_idx = idx/4;				//Index of cell (byte) in physical bf array
 	uint8_t tinycell_idx = (idx%4)*2;			//Index of tinycell (2bit) in physical bf array
 
+	if(mark == 0)
+		this->bf[cell_idx] &= ~(0x03 << tinycell_idx);
+
 	//If there already is sign return error;
 	if(this->bf[cell_idx] & (0x03 << tinycell_idx))
 		return -1;
 
 	//Set specified mark on given position
 	if(mark == 1)
+	{
 		this->bf[cell_idx] |= (0x01 << tinycell_idx);
+		this->pawns_amount++;
+	}
 
 	if(mark == 2)
+	{
 		this->bf[cell_idx] |= (0x02 << tinycell_idx);
+		this->pawns_amount++;
+	}
 
 	//No error
 	return 0;
@@ -86,6 +105,7 @@ Board::Board(uint8_t bf_size)
 {  
     this->bf_size = bf_size;
     this->cell_number = (bf_size*bf_size%4) ? (bf_size*bf_size/4+1) : (bf_size*bf_size/4);
+    this->pawns_amount = 0;
 
     this->bf = new uint8_t[this->cell_number];
 
@@ -107,7 +127,6 @@ void Board::reset(void)
 
 void Board::display()
 {
-	std::cout << (int)this->cell_number << std::endl;
 
 	uint16_t cell_idx;
 	uint8_t tinycell_idx;
@@ -115,7 +134,7 @@ void Board::display()
 	uint8_t col_cnt = 0;
 	char mark[3] = {' ', 'O', 'X'};
 
-	system("cls");
+	//system("cls");
 
 	for(uint16_t i = 0 ; i < this->bf_size*bf_size; i++)
 	{
@@ -136,3 +155,9 @@ void Board::display()
 }
   
 uint8_t Board::get_size(void){return this-> bf_size;}
+
+bool Board::is_board_full(void)
+{
+	if(this->pawns_amount == (this->bf_size * this->bf_size)) return true;
+	return false;
+}
