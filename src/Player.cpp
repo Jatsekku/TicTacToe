@@ -32,7 +32,7 @@ uint8_t Player::get_mark(void)
 
 void Player::make_move(void)
 {
-	std::cout << "nie to! " << std::endl;
+	std::cout << "virtual make_move Error " << std::endl;
 }
 
 void Player::set_game_info(Board* bf, uint8_t win_mark_amount)
@@ -48,7 +48,7 @@ void Player::set_move(int16_t idx)
 
 void Player::display_name(void)
 {
-	std::cout << "Gracz: " << this->name << " " << std::endl;
+	std::cout << "Player: " << this->name << " " << std::endl;
 }
 
 uint8_t Player::get_game_info(void) { return this->win_mark_amount;}

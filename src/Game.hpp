@@ -17,6 +17,7 @@
 			void start(void);
 			void stop(void);
 			void play(void);
+			uint8_t check(void);
 	};
 
 #endif /* GAME_HPP_ */

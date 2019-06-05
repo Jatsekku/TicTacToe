@@ -19,11 +19,11 @@
 			int minmax2(Board *Board, int depth, bool maximizing_player,int alpha,int beta);
 			int findBestMove2(Board * Board,int player);
 
-			/*
+
 			int dummy_evaluation(Board *Board, uint8_t win_mark_amount, uint8_t turn);
 			int minmax(Board *Board, int depth, bool maximizing_player,int alpha,int beta);
 			int findBestMove(Board * Board,int player);
-			*/
+
 	};
 
 #endif /* BOT_HPP_ */

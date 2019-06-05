@@ -6,17 +6,24 @@
 
 int main(void)
 {
-	Board b(6);
-	Human p1("Jacek", 1);
+	int bf_size;
+	int win_mark_amount;
+
+	std::cout << "Please enter the board size: "<< std::endl << ">";
+	std::cin >> bf_size;
+	std::cout << "Please enter the number of symbols required to win:" << std::endl << ">";
+	std::cin >> win_mark_amount;
+
+	Board b(bf_size);
+	Human p1("Player", 1);
 	Bot p2("XO_Bot", 2);
-	Game g(4, &p1, &p2, &b);
+	Game g(win_mark_amount, &p1, &p2, &b);
 
 
 	g.start();
-	while(1)
-		g.play();
+	g.play();
 
 
-
+	return 0;
 }
 

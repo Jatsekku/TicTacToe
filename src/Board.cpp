@@ -134,7 +134,7 @@ void Board::display()
 	uint8_t col_cnt = 0;
 	char mark[3] = {' ', 'O', 'X'};
 
-	//system("cls");
+	system("cls");
 
 	for(uint16_t i = 0 ; i < this->bf_size*bf_size; i++)
 	{
